@@ -305,6 +305,55 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1776186218}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &103207333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 103207334}
+  - component: {fileID: 103207335}
+  m_Layer: 0
+  m_Name: Cursor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &103207334
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103207333}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.1749756, y: -0.655761, z: -4.5207467}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &103207335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 103207333}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61308f4ccada4a941bf222fb4791d109, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 961739752}
+  cursorTexture: {fileID: 2800000, guid: d1ec34cde4a2bde41b8fa3d2d033da59, type: 3}
+  cursorTexture2: {fileID: 2800000, guid: 9254610fb7f6d8045b5b15d29fe791ea, type: 3}
+  cursorTexture3: {fileID: 0}
+  cursorHoldDelay: 0.5
 --- !u!1 &109270724
 GameObject:
   m_ObjectHideFlags: 0
@@ -2249,6 +2298,7 @@ GameObject:
   - component: {fileID: 1331652293}
   - component: {fileID: 1331652296}
   - component: {fileID: 1331652294}
+  - component: {fileID: 1331652297}
   m_Layer: 5
   m_Name: PLAY
   m_TagString: Untagged
@@ -2328,6 +2378,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1331652292}
   m_CullTransparentMesh: 1
+--- !u!114 &1331652297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1331652292}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e026fe3e7e6b2444781aeb4ee1ea9d24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  yourButton: {fileID: 1331652294}
 --- !u!1 &1371362425
 GameObject:
   m_ObjectHideFlags: 0
@@ -3827,3 +3890,4 @@ SceneRoots:
   - {fileID: 1776186218}
   - {fileID: 926909279}
   - {fileID: 74858205}
+  - {fileID: 103207334}
