@@ -1,9 +1,12 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using System.Collections;
 
 public class CustomerMovement : MonoBehaviour
 {
     public float moveSpeed = 2f; // Speed at which the customer moves
     private Transform queuePosition; // The position this customer is moving to
+    private Vector3 target;
 
     private bool isMoving = false;
 
@@ -11,7 +14,7 @@ public class CustomerMovement : MonoBehaviour
     {
         if (isMoving && queuePosition != null)
         {
-            // Smoothly move towards the assigned queue position
+            // Smoothly move towards the next available queue position
             transform.position = Vector3.MoveTowards(transform.position, queuePosition.position, moveSpeed * Time.deltaTime);
 
             // Stop moving when reaching the position
@@ -30,20 +33,43 @@ public class CustomerMovement : MonoBehaviour
     }
 
     private void OnReachedQueuePosition()
-{
-    if (queuePosition.CompareTag("Counter")) 
     {
-        CustomerOrder customerOrder = GetComponent<CustomerOrder>();
-        if (customerOrder != null)
+        if (queuePosition.CompareTag("Counter")) 
         {
-            customerOrder.PlaceOrder();
+            CustomerOrder customerOrder = GetComponent<CustomerOrder>();
+            if (customerOrder != null)
+            {
+                customerOrder.PlaceOrder();
+            }
+        }
+        else
+        {
+            Debug.Log("Customer reached queue position.");
         }
     }
-    else
+    public void MoveToPosition(Vector3 targetPosition, System.Action onComplete)
     {
-        Debug.Log("Customer reached queue position.");
+    target = targetPosition;
+    isMoving = true;
+
+    // Assign the callback to be called after reaching the position
+    StartCoroutine(MoveToTarget(onComplete));
     }
-}
+
+    private IEnumerator MoveToTarget(System.Action onComplete)
+    {
+        while (Vector3.Distance(transform.position, target) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // Stop moving
+        isMoving = false;
+
+        // Trigger the callback
+        onComplete?.Invoke();
+    }
 
 }
 

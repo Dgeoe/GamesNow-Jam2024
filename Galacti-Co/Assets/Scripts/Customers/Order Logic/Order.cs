@@ -5,12 +5,18 @@ using UnityEngine;
 [System.Serializable]
 public class Order
 {
-    public string menuItem; // The item the customer orders
-    public int quantity;    // How many they order
+    public string menuItem; 
+    public string topping;
+    public string sideItem;
+    public string FuelType;
+    public string FuelQuant;
 
-    public Order(string item, int qty)
+    public Order(string mitem, string titem, string fqty, string sitem, string fitem)   
     {
-        menuItem = item;
-        quantity = qty;
+        menuItem = mitem;
+        topping = titem;
+        sideItem = sitem;
+        FuelType = fitem;
+        FuelQuant = fqty;
     }
 }

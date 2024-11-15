@@ -130,11 +130,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   menuItems:
   - Burger
+  - Sandwhich
+  Toppings:
+  - Cheese
+  - Lettuce
+  - Ketchup
+  - Onion
+  - Hot Sauce
+  sideItems:
   - Fries
-  - Soda
+  - Joder Classic
+  - InfiniteUp
+  - Doc FitzPatrick
+  - Solar Flair
+  - Salad
+  - Onion Rings
+  FuelTypes:
+  - Gasoline
+  - Goopalon
+  - DiHydrogenMonoxide
+  - Warp-5
+  FuelQuantity:
+  - 5
+  - 10
+  - 15
+  - 20
   currentOrder:
     menuItem: 
-    quantity: 1
+    topping: 
+    sideItem: 
+    FuelType: 
+    FuelQuant: 
 --- !u!114 &1945360012721663984
 MonoBehaviour:
   m_ObjectHideFlags: 0
