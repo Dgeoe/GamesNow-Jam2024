@@ -15,10 +15,12 @@ public class CustomerState : MonoBehaviour
 
     private CustomerMovement customerMovement;
     private Transform[] idlePositions; // Array of idle positions
+    private Animator customerAnimator; // Reference to the customer's Animator
 
     private void Start()
     {
         customerMovement = GetComponent<CustomerMovement>();
+        customerAnimator = GetComponent<Animator>(); // Get the Animator component
         currentState = State.InQueue;
 
         // Find the "Idle Positions" object and populate the idlePositions array
@@ -70,6 +72,25 @@ public class CustomerState : MonoBehaviour
     private void OnReachedIdlePosition()
     {
         Debug.Log("Customer is now idle and waiting.");
-        // Customer remains idle until their order is ready
+
+        // Set the "Speaking" parameter to true on the Animator
+        if (customerAnimator != null)
+        {
+            customerAnimator.SetBool("Speaking", true);
+        }
+        else
+        {
+            Debug.LogError("Animator component not found on the customer.");
+        }
+    }
+
+    // Reset the "Speaking" parameter when the customer stops idling
+    public void StopSpeaking()
+    {
+        if (customerAnimator != null)
+        {
+            customerAnimator.SetBool("Speaking", false);
+        }
     }
 }
+

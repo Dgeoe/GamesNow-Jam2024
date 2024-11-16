@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public GameObject customerPrefab; // Reference to the customer prefab (will make array later)
-    public Transform spawnPoint;      // Where customers spawn
-    public float spawnInterval = 5f;  // Time between customers spawning outside of resteraunt (add cap later)
+    public GameObject[] customerPrefabs; // Array of customer prefabs
+    public Transform spawnPoint;         // Where customers spawn
+    public float spawnInterval = 5f;     // Time between customer spawns
 
     private Queue<Transform> queuePositions = new Queue<Transform>(); // Queue positions in the restaurant
 
-    public List<Transform> queuePoints; // Set three queue points 
+    public List<Transform> queuePoints; // Set queue points in the inspector
 
     private void Start()
     {
@@ -27,9 +27,14 @@ public class CustomerSpawner : MonoBehaviour
     {
         while (true)
         {
-            if (queuePositions.Count > 0) // Only spawn if there's space in the queue
+            if (queuePositions.Count > 0 && customerPrefabs.Length > 0) // Only spawn if there's space and prefabs are available
             {
-                GameObject newCustomer = Instantiate(customerPrefab, spawnPoint.position, Quaternion.identity);
+                // Pick a random prefab
+                int randomIndex = Random.Range(0, customerPrefabs.Length);
+                GameObject randomPrefab = customerPrefabs[randomIndex];
+
+                // Spawn the customer
+                GameObject newCustomer = Instantiate(randomPrefab, spawnPoint.position, Quaternion.identity);
 
                 // Assign the next available queue position to the customer
                 CustomerMovement customerMovement = newCustomer.GetComponent<CustomerMovement>();
@@ -39,12 +44,12 @@ public class CustomerSpawner : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(spawnInterval); 
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 
     public void FreeQueuePosition(Transform position)
     {
-        queuePositions.Enqueue(position); // Add position to the queue again
+        queuePositions.Enqueue(position); // Add position back to the queue
     }
 }
