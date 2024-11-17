@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Interactable
   - Counter
+  - Customer
   layers:
   - Default
   - TransparentFX

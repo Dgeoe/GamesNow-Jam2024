@@ -190,9 +190,10 @@ GameObject:
   - component: {fileID: -2527181967665882277}
   - component: {fileID: 4189709073104928459}
   - component: {fileID: 7380488803380815725}
+  - component: {fileID: 393260810801842492}
   m_Layer: 0
   m_Name: Gworlock
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -361,6 +362,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &393260810801842492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5538370698578851203}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b59f149e863e325429902ce99711e25f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManager: {fileID: 0}
 --- !u!1 &9013641887675274343
 GameObject:
   m_ObjectHideFlags: 0
