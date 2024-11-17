@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public GameObject[] customerPrefabs; 
-    public Transform spawnPoint;         
-    public float spawnInterval = 5f;     
+    public GameObject[] customerPrefabs; // Array of customer prefabs
+    public Transform spawnPoint;         // Where customers spawn
+    public float spawnInterval = 5f;     // Time between customer spawns
 
-    private Queue<Transform> queuePositions = new Queue<Transform>(); 
-    public List<Transform> queuePoints;     
-    public CustomerSoundPlayer soundPlayer; 
+    private Queue<Transform> queuePositions = new Queue<Transform>(); // Queue positions in the restaurant
+    public List<Transform> queuePoints; // Set queue points in the inspector
+    public CustomerSoundPlayer soundPlayer; // Reference to CustomerSoundPlayer script
+    public CustomerVideoPlayer videoPlayer; // Reference to CustomerVideoPlayer script
 
     private void Start()
     {
+        // Add queue points to the queue system
         foreach (Transform point in queuePoints)
         {
             queuePositions.Enqueue(point);
@@ -46,6 +48,12 @@ public class CustomerSpawner : MonoBehaviour
                 if (soundPlayer != null)
                 {
                     soundPlayer.PlaySoundForCustomer(randomIndex);
+                }
+
+                // Play the corresponding video
+                if (videoPlayer != null)
+                {
+                    videoPlayer.PlayVideoForCustomer(randomIndex);
                 }
             }
 
