@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: f1359931ea3aa4e40a86661ecafcf2fd
   - enabled: 1
+    path: Assets/Scenes/Pittstop.unity
+    guid: 51008cd571fce50498c573cff5951cd0
+  - enabled: 1
     path: Assets/Scenes/Tutorial 1.unity
     guid: 84c9ce7b32cee1f4db0e5cad68d29810
   m_configObjects:

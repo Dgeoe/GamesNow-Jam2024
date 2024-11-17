@@ -10,45 +10,37 @@ public class Conveyer : MonoBehaviour
 
     void Start()
     {
-        // Get the Animator component attached to the same object
         animator = GetComponent<Animator>();
-
-        // Ensure the Animator is found
         if (animator == null)
         {
-            Debug.LogError("Animator component not found on this GameObject.");
+            Debug.LogError("Animator is not here bucko.");
             return;
         }
 
-        // Start the delayed animation trigger
         StartCoroutine(TriggerAnimationAfterDelay());
     }
 
     void Update()
     {
-        // Toggle the "In" parameter when the spacebar is pressed
         if (Input.GetKeyDown(KeyCode.Space))
         {
             // Flip the current value of the "In" parameter
             bool currentState = animator.GetBool("In");
             animator.SetBool("In", !currentState);
 
-            // If toggled manually, cancel the delay trigger if not already set
             if (!isDelayTriggered)
             {
                 StopAllCoroutines();
-                isDelayTriggered = true; // Prevent re-triggering from delay
+                isDelayTriggered = true; // Prevents triggering again from delay if handled prior manually 
             }
         }
     }
 
     private System.Collections.IEnumerator TriggerAnimationAfterDelay()
     {
-        // Wait for the specified delay
         yield return new WaitForSeconds(delayTime);
 
-        // Set the "In" parameter to true
         animator.SetBool("In", true);
-        isDelayTriggered = true; // Mark the delay as triggered
+        isDelayTriggered = true; 
     }
 }

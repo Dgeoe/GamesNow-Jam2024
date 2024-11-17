@@ -14,16 +14,15 @@ public class CustomerState : MonoBehaviour
     public State currentState;
 
     private CustomerMovement customerMovement;
-    private Transform[] idlePositions; // Array of idle positions
-    private Animator customerAnimator; // Reference to the customer's Animator
+    private Transform[] idlePositions; 
+    private Animator customerAnimator; 
 
     private void Start()
     {
         customerMovement = GetComponent<CustomerMovement>();
-        customerAnimator = GetComponent<Animator>(); // Get the Animator component
+        customerAnimator = GetComponent<Animator>(); 
         currentState = State.InQueue;
 
-        // Find the "Idle Positions" object and populate the idlePositions array
         PopulateIdlePositions();
     }
 
@@ -32,7 +31,6 @@ public class CustomerState : MonoBehaviour
         GameObject idlePositionsObject = GameObject.Find("Idle Positions");
         if (idlePositionsObject != null)
         {
-            // Get all child transforms of "Idle Positions"
             int childCount = idlePositionsObject.transform.childCount;
             idlePositions = new Transform[childCount];
             for (int i = 0; i < childCount; i++)
@@ -57,10 +55,8 @@ public class CustomerState : MonoBehaviour
             return;
         }
 
-        // Select a random idle position
         Transform targetPosition = idlePositions[Random.Range(0, idlePositions.Length)];
 
-        // Move the customer to the idle position
         if (customerMovement != null)
         {
             customerMovement.MoveToPosition(targetPosition.position, OnReachedIdlePosition);
@@ -73,7 +69,6 @@ public class CustomerState : MonoBehaviour
     {
         Debug.Log("Customer is now idle and waiting.");
 
-        // Set the "Speaking" parameter to true on the Animator
         if (customerAnimator != null)
         {
             customerAnimator.SetBool("Speaking", true);
@@ -84,7 +79,6 @@ public class CustomerState : MonoBehaviour
         }
     }
 
-    // Reset the "Speaking" parameter when the customer stops idling
     public void StopSpeaking()
     {
         if (customerAnimator != null)
